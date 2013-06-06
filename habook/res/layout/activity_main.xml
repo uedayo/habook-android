@@ -1,14 +1,62 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity" >
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.0" >
+
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_weight="1"
+            android:gravity="center" >
+
+            <Button
+                android:id="@+id/btn_search"
+                style="@style/Main.button"
+                android:text="@string/main_btn_search" >
+            </Button>
+
+            <Button
+                android:id="@+id/btn_history"
+                style="@style/Main.button"
+                android:text="@string/main_btn_history" >
+            </Button>
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_weight="1"
+            android:gravity="center" >
+
+            <Button
+                android:id="@+id/btn_add_book"
+                style="@style/Main.button"
+                android:text="@string/main_btn_add_book" >
+            </Button>
+
+            <Button
+                android:id="@+id/btn_add_user"
+                style="@style/Main.button"
+                android:text="@string/main_btn_add_user" >
+            </Button>
+        </TableRow>
+    </TableLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
+        android:layout_gravity="center"
+        android:text="@string/app_name" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:text="@string/hello_world" />
 
-</RelativeLayout>
+</LinearLayout>

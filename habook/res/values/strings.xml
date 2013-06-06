@@ -2,7 +2,12 @@
 <resources>
 
     <string name="app_name">Habook</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="hello_world">mention to @uedayo</string>
     <string name="menu_settings">Settings</string>
+    <!-- main -->
+    <string name="main_btn_search">Search</string>
+    <string name="main_btn_history">History</string>
+    <string name="main_btn_add_book">Add\nBook</string>
+    <string name="main_btn_add_user">Add\nUser</string>
 
 </resources>
