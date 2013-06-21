@@ -7,7 +7,7 @@
     <!-- main -->
     <string name="main_btn_search">Search</string>
     <string name="main_btn_history">History</string>
-    <string name="main_btn_add_book">Add\nBook</string>
+    <string name="main_btn_add_book">Rent/Add\nBook</string>
     <string name="main_btn_add_user">Add\nUser</string>
 
 </resources>

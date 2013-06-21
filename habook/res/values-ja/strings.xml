@@ -7,7 +7,7 @@
     <!-- main -->
     <string name="main_btn_search">本の検索</string>
     <string name="main_btn_history">本の\n貸出履歴</string>
-    <string name="main_btn_add_book">本の追加</string>
+    <string name="main_btn_add_book">本の貸出\n追加</string>
     <string name="main_btn_add_user">ユーザーの\n追加</string>
 
 </resources>
