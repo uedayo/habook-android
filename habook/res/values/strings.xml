@@ -5,9 +5,9 @@
     <string name="hello_world">mention to @uedayo</string>
     <string name="menu_settings">Settings</string>
     <!-- main -->
-    <string name="main_btn_search">Search</string>
-    <string name="main_btn_history">History</string>
-    <string name="main_btn_add_book">Rent/Add\nBook</string>
-    <string name="main_btn_add_user">Add\nUser</string>
-
+    <string name="main_btn_lend_book">LEND</string>
+    <string name="main_btn_return_book">RETURN</string>
+    <string name="main_btn_search">SEARCH</string>
+    <string name="main_btn_history">HISTORY</string>
+    
 </resources>

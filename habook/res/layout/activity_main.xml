@@ -16,15 +16,15 @@
             android:gravity="center" >
 
             <Button
-                android:id="@+id/btn_history"
+                android:id="@+id/btn_lend_book"
                 style="@style/Main.button"
-                android:text="@string/main_btn_history" >
+                android:text="@string/main_btn_lend_book" >
             </Button>
 
             <Button
-                android:id="@+id/btn_add_user"
+                android:id="@+id/btn_return_book"
                 style="@style/Main.button"
-                android:text="@string/main_btn_add_user" >
+                android:text="@string/main_btn_return_book" >
             </Button>
         </TableRow>
 
@@ -40,9 +40,9 @@
             </Button>
 
             <Button
-                android:id="@+id/btn_add_book"
+                android:id="@+id/btn_history"
                 style="@style/Main.button"
-                android:text="@string/main_btn_add_book" >
+                android:text="@string/main_btn_history" >
             </Button>
         </TableRow>
     </TableLayout>

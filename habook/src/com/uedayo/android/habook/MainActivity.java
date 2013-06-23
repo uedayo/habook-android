@@ -18,36 +18,53 @@ public class MainActivity extends Activity implements OnClickListener {
     }
 
     private void setOnClickLisner() {
+        ((Button) findViewById(R.id.btn_lend_book)).setOnClickListener(this);
+        ((Button) findViewById(R.id.btn_return_book)).setOnClickListener(this);
         ((Button) findViewById(R.id.btn_search)).setOnClickListener(this);
         ((Button) findViewById(R.id.btn_history)).setOnClickListener(this);
-        ((Button) findViewById(R.id.btn_add_book)).setOnClickListener(this);
-        ((Button) findViewById(R.id.btn_add_user)).setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
+            case R.id.btn_lend_book:
+                lendBook();
+                break;
+            case R.id.btn_return_book:
+                returnBook();
+                break;
             case R.id.btn_search:
-
+                searchBook();
                 break;
-
             case R.id.btn_history:
-
-                break;
-            case R.id.btn_add_book:
-                startAddBookActivity();
-                break;
-            case R.id.btn_add_user:
-
+                showLendHistory();
                 break;
             default:
                 break;
         }
     }
 
-    private void startAddBookActivity() {
-        Intent intent = new Intent(MainActivity.this, AddBookActivity.class);
+    private void lendBook() {
+        Intent intent = new Intent(MainActivity.this, BookCodeActivity.class);
+        intent.putExtra(WebViewActivity.EXTRA_ACTION, WebViewActivity.EXTRA_ACTION_LEND);
         startActivity(intent);
     }
 
+    private void returnBook() {
+        Intent intent = new Intent(MainActivity.this, BookCodeActivity.class);
+        intent.putExtra(WebViewActivity.EXTRA_ACTION, WebViewActivity.EXTRA_ACTION_LEND);
+        startActivity(intent);
+    }
+
+    private void searchBook() {
+        Intent intent = new Intent(MainActivity.this, WebViewActivity.class);
+        intent.putExtra(WebViewActivity.EXTRA_ACTION, WebViewActivity.EXTRA_ACTION_LEND);
+        startActivity(intent);
+    }
+
+    private void showLendHistory() {
+        Intent intent = new Intent(MainActivity.this, WebViewActivity.class);
+        intent.putExtra(WebViewActivity.EXTRA_ACTION, WebViewActivity.EXTRA_ACTION_LEND);
+        startActivity(intent);
+    }
 }

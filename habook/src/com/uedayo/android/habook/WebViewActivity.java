@@ -11,12 +11,14 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 public class WebViewActivity extends Activity {
-    
+
     static final String TAG = WebViewActivity.class.getSimpleName();
 
     static final String EXTRA_ACTION = "com.uedayo.android.habook.action_extra_action";
     static final String EXTRA_ACTION_LEND = "com.uedayo.android.habook.action_extra_action_lend";
     static final String EXTRA_ACTION_RETURN = "com.uedayo.android.habook.action_extra_action_return";
+    static final String EXTRA_ACTION_SEARCH = "com.uedayo.android.habook.action_extra_action_search";
+    static final String EXTRA_ACTION_HISTORY = "com.uedayo.android.habook.action_extra_action_history";
     static final String EXTRA_ISBN = "com.uedayo.android.habook.action_extra_isbn";
 
     WebView webView;
@@ -27,6 +29,11 @@ public class WebViewActivity extends Activity {
         setLayout();
         setJavaScriptEnabled();
         setLinkNotOpenWithBrowser();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         handleIntent();
     }
 
