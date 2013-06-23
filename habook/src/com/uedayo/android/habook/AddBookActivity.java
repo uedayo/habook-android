@@ -15,6 +15,8 @@ public class AddBookActivity extends Activity {
     static final int REQUEST_CODE = 10000;
     static final String RESULT_KEY = "SCAN_RESULT";
     static final String QR_SCAN_PACKAGE_NAME = "com.google.zxing.client.android";
+    static final String ACION_QR_SCAN = QR_SCAN_PACKAGE_NAME + ".SCAN";
+    static final String URI_QR_SCAN = "market://details?id=" + QR_SCAN_PACKAGE_NAME;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +25,7 @@ public class AddBookActivity extends Activity {
     }
 
     private void startQRCodeScanner() {
-        Intent intent = new Intent(QR_SCAN_PACKAGE_NAME + ".SCAN");
+        Intent intent = new Intent(ACION_QR_SCAN);
         intent.putExtra("SCAN_MODE", "PRODUCT_MODE");
 
         try {
@@ -35,8 +37,7 @@ public class AddBookActivity extends Activity {
     }
 
     private void goToMarket() {
-        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id="
-                + QR_SCAN_PACKAGE_NAME));
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(URI_QR_SCAN));
         try {
             startActivity(intent);
         } catch (Exception e) {
@@ -51,6 +52,7 @@ public class AddBookActivity extends Activity {
                 String barCode = data.getStringExtra(RESULT_KEY);
                 Log.v(TAG, "barCode: " + barCode);
                 searchRequest(barCode);
+                finish();
             } else {
                 startMainActivity();
             }
@@ -59,11 +61,14 @@ public class AddBookActivity extends Activity {
     }
 
     private void startMainActivity() {
-        Intent intent = new Intent(AddBookActivity.this, MainActivity.class);
+        Intent intent = new Intent(AddBookActivity.this, WebViewActivity.class);
         startActivity(intent);
     }
 
     private void searchRequest(String barCode) {
-        Log.v(TAG, "Search request has sent to server");
+        Intent intent = new Intent(AddBookActivity.this, WebViewActivity.class);
+        intent.putExtra(WebViewActivity.EXTRA_ACTION, WebViewActivity.EXTRA_ACTION_LEND);
+        intent.putExtra(WebViewActivity.EXTRA_ISBN, barCode);
+        startActivity(intent);
     }
 }
