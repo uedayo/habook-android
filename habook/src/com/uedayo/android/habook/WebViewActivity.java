@@ -49,20 +49,17 @@ public class WebViewActivity extends Activity {
         String url = "";
         if (EXTRA_ACTION_LEND.equals(action)) {
             url = ServerConnectionInterface.Lend;
+            url += isbn;
         } else if (EXTRA_ACTION_RETURN.equals(action)) {
             url = ServerConnectionInterface.Return;
+            url += isbn;
+        } else if (EXTRA_ACTION_SEARCH.equals(action)) {
+            url = ServerConnectionInterface.Search;
         } else {
             return;
         }
-        url += addIsbn(isbn);
         Log.v(TAG, "url" + url);
         webView.loadUrl(url);
-    }
-
-    private String addIsbn(String isbn) {
-        String url = "?isbn=";
-        url += isbn;
-        return url;
     }
 
     private void setLayout() {

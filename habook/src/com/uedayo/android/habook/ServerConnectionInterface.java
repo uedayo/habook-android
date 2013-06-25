@@ -7,5 +7,5 @@ public interface ServerConnectionInterface {
 
     String Lend = ServerHost + "/books/lend/";
     String Return = ServerHost + "/books/return/";
-
+    String Search = ServerHost + "/books/";
 }

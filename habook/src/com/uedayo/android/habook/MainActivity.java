@@ -37,7 +37,6 @@ public class MainActivity extends Activity implements OnClickListener {
                 searchBook();
                 break;
             case R.id.btn_history:
-                showLendHistory();
                 break;
             default:
                 break;
@@ -52,19 +51,19 @@ public class MainActivity extends Activity implements OnClickListener {
 
     private void returnBook() {
         Intent intent = new Intent(MainActivity.this, BookCodeActivity.class);
-        intent.putExtra(WebViewActivity.EXTRA_ACTION, WebViewActivity.EXTRA_ACTION_LEND);
+        intent.putExtra(WebViewActivity.EXTRA_ACTION, WebViewActivity.EXTRA_ACTION_RETURN);
         startActivity(intent);
     }
 
     private void searchBook() {
         Intent intent = new Intent(MainActivity.this, WebViewActivity.class);
-        intent.putExtra(WebViewActivity.EXTRA_ACTION, WebViewActivity.EXTRA_ACTION_LEND);
+        intent.putExtra(WebViewActivity.EXTRA_ACTION, WebViewActivity.EXTRA_ACTION_SEARCH);
         startActivity(intent);
     }
 
     private void showLendHistory() {
         Intent intent = new Intent(MainActivity.this, WebViewActivity.class);
-        intent.putExtra(WebViewActivity.EXTRA_ACTION, WebViewActivity.EXTRA_ACTION_LEND);
+        intent.putExtra(WebViewActivity.EXTRA_ACTION, WebViewActivity.EXTRA_ACTION_HISTORY);
         startActivity(intent);
     }
 }
