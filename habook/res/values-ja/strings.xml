@@ -8,6 +8,6 @@
     <string name="main_btn_lend_book">借りる</string>
     <string name="main_btn_return_book">返す</string>
     <string name="main_btn_search">探す</string>
-    <string name="main_btn_history">履歴</string>
+    <string name="main_btn_user">ユーザ管理</string>
 
 </resources>

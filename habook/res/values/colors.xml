@@ -1,4 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="btn_text_color">#000000</color>
+
+    <color name="btn_text_color">#FFFFFF</color>
+    <color name="btn_blue_on_color">#6CABE7</color>
+    <color name="btn_blue_off_color">#93BFEB</color>
+    <color name="btn_green_on_color">#89D5AF</color>
+    <color name="btn_green_off_color">#A6DEC1</color>
+    <color name="btn_purple_on_color">#BCA8E6</color>
+    <color name="btn_purple_off_color">#D8CBEB</color>
+    <color name="btn_red_on_color">#FC8DA9</color>
+    <color name="btn_red_off_color">#F8B8CB</color>
+    
 </resources>

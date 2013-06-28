@@ -3,6 +3,8 @@ package com.uedayo.android.habook;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.ScaleDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -19,11 +21,11 @@ public class MainActivity extends Activity implements OnClickListener {
         setOnClickLisner();
     }
 
-    private void setOnClickLisner() {
+	private void setOnClickLisner() {
         ((Button) findViewById(R.id.btn_lend_book)).setOnClickListener(this);
         ((Button) findViewById(R.id.btn_return_book)).setOnClickListener(this);
         ((Button) findViewById(R.id.btn_search)).setOnClickListener(this);
-        ((Button) findViewById(R.id.btn_history)).setOnClickListener(this);
+        ((Button) findViewById(R.id.btn_user)).setOnClickListener(this);
     }
 
     @Override
@@ -38,7 +40,8 @@ public class MainActivity extends Activity implements OnClickListener {
             case R.id.btn_search:
                 searchBook();
                 break;
-            case R.id.btn_history:
+            case R.id.btn_user:
+                showUser();
                 break;
             default:
                 break;
@@ -63,9 +66,9 @@ public class MainActivity extends Activity implements OnClickListener {
         startActivity(intent);
     }
 
-    private void showLendHistory() {
+    private void showUser() {
         Intent intent = new Intent(MainActivity.this, WebViewActivity.class);
-        intent.putExtra(WebViewActivity.EXTRA_ACTION, WebViewActivity.EXTRA_ACTION_HISTORY);
+        intent.putExtra(WebViewActivity.EXTRA_ACTION, WebViewActivity.EXTRA_ACTION_USER);
         startActivity(intent);
     }
 }

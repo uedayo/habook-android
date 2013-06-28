@@ -18,12 +18,14 @@
             <Button
                 android:id="@+id/btn_lend_book"
                 style="@style/Main.button"
+                android:background="@drawable/btn_blue"
                 android:text="@string/main_btn_lend_book" >
             </Button>
 
             <Button
                 android:id="@+id/btn_return_book"
                 style="@style/Main.button"
+                android:background="@drawable/btn_red"
                 android:text="@string/main_btn_return_book" >
             </Button>
         </TableRow>
@@ -36,13 +38,15 @@
             <Button
                 android:id="@+id/btn_search"
                 style="@style/Main.button"
+                android:background="@drawable/btn_purple"
                 android:text="@string/main_btn_search" >
             </Button>
 
             <Button
-                android:id="@+id/btn_history"
+                android:id="@+id/btn_user"
                 style="@style/Main.button"
-                android:text="@string/main_btn_history" >
+                android:background="@drawable/btn_green"
+                android:text="@string/main_btn_user" >
             </Button>
         </TableRow>
     </TableLayout>

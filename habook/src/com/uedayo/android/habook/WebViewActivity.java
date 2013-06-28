@@ -20,7 +20,7 @@ public class WebViewActivity extends Activity {
     static final String EXTRA_ACTION_LEND = "com.uedayo.android.habook.action_extra_action_lend";
     static final String EXTRA_ACTION_RETURN = "com.uedayo.android.habook.action_extra_action_return";
     static final String EXTRA_ACTION_SEARCH = "com.uedayo.android.habook.action_extra_action_search";
-    static final String EXTRA_ACTION_HISTORY = "com.uedayo.android.habook.action_extra_action_history";
+    static final String EXTRA_ACTION_USER = "com.uedayo.android.habook.action_extra_action_user";
     static final String EXTRA_ISBN = "com.uedayo.android.habook.action_extra_isbn";
 
     WebView webView;
@@ -57,6 +57,8 @@ public class WebViewActivity extends Activity {
             url += isbn;
         } else if (EXTRA_ACTION_SEARCH.equals(action)) {
             url = ServerConnectionInterface.Search;
+        } else if (EXTRA_ACTION_USER.equals(action)) {
+            url = ServerConnectionInterface.User;
         } else {
             return;
         }
