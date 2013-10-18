@@ -3,8 +3,6 @@ package com.uedayo.android.habook;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.ScaleDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;

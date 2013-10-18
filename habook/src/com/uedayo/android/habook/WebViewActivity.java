@@ -8,9 +8,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Window;
+import android.webkit.CookieManager;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.webkit.HttpAuthHandler;
+import android.webkit.WebViewDatabase;
 
 public class WebViewActivity extends Activity {
 
@@ -79,7 +82,34 @@ public class WebViewActivity extends Activity {
     }
 
     private void setLinkNotOpenWithBrowser() {
-        webView.setWebViewClient(new WebViewClient());
+        WebViewDatabase.getInstance(this).clearHttpAuthUsernamePassword();
+        webView.setHttpAuthUsernamePassword(ServerConnectionInterface.Host, ServerConnectionInterface.Realm, ServerConnectionInterface.UserName, ServerConnectionInterface.Password);
+        webView.setWebViewClient(new WebViewClient() {
+            private String loginCookie;
+            @Override
+            public void onLoadResource(WebView view, String url) {
+                    CookieManager cookieManager = CookieManager.getInstance();
+                    loginCookie = cookieManager.getCookie(url);
+            }
+
+            @Override
+            public void onReceivedHttpAuthRequest(WebView view, HttpAuthHandler handler, String host, String realm) {
+                    String[] up = view.getHttpAuthUsernamePassword(host, realm);
+                    handler.proceed(ServerConnectionInterface.UserName, ServerConnectionInterface.Password);
+                    if (up != null && up.length == 2) {
+                            handler.proceed(up[0], up[1]);
+                    }
+                    else {
+                            Log.d("sample", "Could not find username/password for domain: " + host + "with realm = "+ realm);
+                    }
+            }
+
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                    CookieManager cookieManager = CookieManager.getInstance();
+                    cookieManager.setCookie(url, loginCookie);
+            }
+        });
     }
 
     @Override
