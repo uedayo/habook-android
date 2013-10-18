@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">ホンドコ？</string>
-    <string name="hello_world">文句は @uedayo まで</string>
+    <string name="hello_world">ホンドコ？への要望は 上田 まで</string>
     <string name="menu_settings">設定</string>
     <!-- main -->
     <string name="main_btn_lend_book">借りる</string>
