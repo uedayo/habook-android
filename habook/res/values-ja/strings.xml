@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">ホンドコ？</string>
-    <string name="hello_world">ホンドコ？への要望は 上田 まで</string>
+    <string name="app_name">ほんどこ？</string>
+    <string name="hello_world">ほんどこ？への要望は 上田 まで</string>
     <string name="menu_settings">設定</string>
-    <!-- main -->
-    <string name="main_btn_lend_book">借りる</string>
-    <string name="main_btn_return_book">返す</string>
-    <string name="main_btn_search">探す</string>
-    <string name="main_btn_user">ユーザ管理</string>
+    <!-- button -->
+    <string name="btn_main">メイン</string>
+    <string name="btn_search">本の検索</string>
+    <string name="btn_user">ユーザ管理</string>
+    <string name="btn_lend_book">本の貸出</string>
+    <string name="btn_return_book">本の返却</string>
 
+    <!-- dialog -->
     <string name="confirm_dialog_title">終了確認</string>
     <string name="confirm_dialog_message">本当に終了しますか？</string>
     <string name="confirm_dialog_ok">終了</string>

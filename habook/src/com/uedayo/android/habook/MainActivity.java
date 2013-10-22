@@ -62,6 +62,7 @@ public class MainActivity extends Activity implements OnClickListener {
 
     private void searchBook() {
         Intent intent = new Intent(MainActivity.this, WebViewActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
         intent.putExtra(WebViewActivity.EXTRA_ACTION, WebViewActivity.EXTRA_ACTION_SEARCH);
         startActivity(intent);
     }

@@ -2,6 +2,8 @@
 <resources>
 
     <color name="btn_text_color">#FFFFFF</color>
+    <color name="btn_grey_on_color">#B5ACA6</color>
+    <color name="btn_grey_off_color">#CAC4C2</color>
     <color name="btn_blue_on_color">#6CABE7</color>
     <color name="btn_blue_off_color">#93BFEB</color>
     <color name="btn_green_on_color">#89D5AF</color>

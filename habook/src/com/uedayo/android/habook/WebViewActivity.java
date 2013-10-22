@@ -41,6 +41,7 @@ public class WebViewActivity extends Activity implements OnClickListener {
     }
 
     private void setOnClickLisner() {
+        ((Button) findViewById(R.id.btn_main)).setOnClickListener(this);
         ((Button) findViewById(R.id.btn_search)).setOnClickListener(this);
         ((Button) findViewById(R.id.btn_user)).setOnClickListener(this);
         ((Button) findViewById(R.id.btn_lend_book)).setOnClickListener(this);
@@ -140,6 +141,9 @@ public class WebViewActivity extends Activity implements OnClickListener {
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
+            case R.id.btn_main:
+                main();
+                break;
             case R.id.btn_search:
                 searchBook();
                 break;
@@ -157,27 +161,39 @@ public class WebViewActivity extends Activity implements OnClickListener {
         }
     }
 
+    private void main() {
+        Intent intent = new Intent(WebViewActivity.this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
+        startActivity(intent);
+    }
+
+
     private void searchBook() {
         Intent intent = new Intent(WebViewActivity.this, WebViewActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         intent.putExtra(WebViewActivity.EXTRA_ACTION, WebViewActivity.EXTRA_ACTION_SEARCH);
         startActivity(intent);
     }
 
     private void showUser() {
         Intent intent = new Intent(WebViewActivity.this, WebViewActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         intent.putExtra(WebViewActivity.EXTRA_ACTION, WebViewActivity.EXTRA_ACTION_USER);
         startActivity(intent);
     }
 
     private void lendBook() {
         Intent intent = new Intent(WebViewActivity.this, BookCodeActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         intent.putExtra(WebViewActivity.EXTRA_ACTION, WebViewActivity.EXTRA_ACTION_LEND);
         startActivity(intent);
     }
 
     private void returnBook() {
         Intent intent = new Intent(WebViewActivity.this, BookCodeActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         intent.putExtra(WebViewActivity.EXTRA_ACTION, WebViewActivity.EXTRA_ACTION_RETURN);
         startActivity(intent);
     }
+
 }
