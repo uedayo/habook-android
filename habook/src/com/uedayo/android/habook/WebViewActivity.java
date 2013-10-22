@@ -18,15 +18,15 @@ import android.webkit.HttpAuthHandler;
 import android.webkit.WebViewDatabase;
 import android.widget.Button;
 
-public class WebViewActivity extends Activity implements OnClickListener{
+public class WebViewActivity extends Activity implements OnClickListener {
 
     static final String TAG = WebViewActivity.class.getSimpleName();
 
     static final String EXTRA_ACTION = "com.uedayo.android.habook.action_extra_action";
-    static final String EXTRA_ACTION_LEND = "com.uedayo.android.habook.action_extra_action_lend";
-    static final String EXTRA_ACTION_RETURN = "com.uedayo.android.habook.action_extra_action_return";
     static final String EXTRA_ACTION_SEARCH = "com.uedayo.android.habook.action_extra_action_search";
     static final String EXTRA_ACTION_USER = "com.uedayo.android.habook.action_extra_action_user";
+    static final String EXTRA_ACTION_LEND = "com.uedayo.android.habook.action_extra_action_lend";
+    static final String EXTRA_ACTION_RETURN = "com.uedayo.android.habook.action_extra_action_return";
     static final String EXTRA_ISBN = "com.uedayo.android.habook.action_extra_isbn";
 
     WebView webView;
@@ -41,10 +41,10 @@ public class WebViewActivity extends Activity implements OnClickListener{
     }
 
     private void setOnClickLisner() {
-        ((Button) findViewById(R.id.btn_lend_book)).setOnClickListener(this);
-        ((Button) findViewById(R.id.btn_return_book)).setOnClickListener(this);
         ((Button) findViewById(R.id.btn_search)).setOnClickListener(this);
         ((Button) findViewById(R.id.btn_user)).setOnClickListener(this);
+        ((Button) findViewById(R.id.btn_lend_book)).setOnClickListener(this);
+        ((Button) findViewById(R.id.btn_return_book)).setOnClickListener(this);
     }
 
     @Override
@@ -58,21 +58,20 @@ public class WebViewActivity extends Activity implements OnClickListener{
         String action = intent.getStringExtra(EXTRA_ACTION);
         String isbn = intent.getStringExtra(EXTRA_ISBN);
         loadUrl(action, isbn);
-
     }
 
     private void loadUrl(String action, String isbn) {
         String url = "";
-        if (EXTRA_ACTION_LEND.equals(action)) {
+        if (EXTRA_ACTION_SEARCH.equals(action)) {
+            url = ServerConnectionInterface.Search;
+        } else if (EXTRA_ACTION_USER.equals(action)) {
+            url = ServerConnectionInterface.User;
+        } else if (EXTRA_ACTION_LEND.equals(action)) {
             url = ServerConnectionInterface.Lend;
             url += isbn;
         } else if (EXTRA_ACTION_RETURN.equals(action)) {
             url = ServerConnectionInterface.Return;
             url += isbn;
-        } else if (EXTRA_ACTION_SEARCH.equals(action)) {
-            url = ServerConnectionInterface.Search;
-        } else if (EXTRA_ACTION_USER.equals(action)) {
-            url = ServerConnectionInterface.User;
         } else {
             return;
         }
@@ -94,31 +93,37 @@ public class WebViewActivity extends Activity implements OnClickListener{
 
     private void setLinkNotOpenWithBrowser() {
         WebViewDatabase.getInstance(this).clearHttpAuthUsernamePassword();
-        webView.setHttpAuthUsernamePassword(ServerConnectionInterface.Host, ServerConnectionInterface.Realm, ServerConnectionInterface.UserName, ServerConnectionInterface.Password);
+        webView.setHttpAuthUsernamePassword(ServerConnectionInterface.Host,
+                ServerConnectionInterface.Realm, ServerConnectionInterface.UserName,
+                ServerConnectionInterface.Password);
         webView.setWebViewClient(new WebViewClient() {
             private String loginCookie;
+
             @Override
             public void onLoadResource(WebView view, String url) {
-                    CookieManager cookieManager = CookieManager.getInstance();
-                    loginCookie = cookieManager.getCookie(url);
+                CookieManager cookieManager = CookieManager.getInstance();
+                loginCookie = cookieManager.getCookie(url);
             }
 
             @Override
-            public void onReceivedHttpAuthRequest(WebView view, HttpAuthHandler handler, String host, String realm) {
-                    String[] up = view.getHttpAuthUsernamePassword(host, realm);
-                    handler.proceed(ServerConnectionInterface.UserName, ServerConnectionInterface.Password);
-                    if (up != null && up.length == 2) {
-                            handler.proceed(up[0], up[1]);
-                    }
-                    else {
-                            Log.d("sample", "Could not find username/password for domain: " + host + "with realm = "+ realm);
-                    }
+            public void onReceivedHttpAuthRequest(WebView view, HttpAuthHandler handler,
+                    String host, String realm) {
+                String[] up = view.getHttpAuthUsernamePassword(host, realm);
+                handler.proceed(ServerConnectionInterface.UserName,
+                        ServerConnectionInterface.Password);
+                if (up != null && up.length == 2) {
+                    handler.proceed(up[0], up[1]);
+                }
+                else {
+                    Log.d("sample", "Could not find username/password for domain: " + host
+                            + "with realm = " + realm);
+                }
             }
 
             @Override
             public void onPageFinished(WebView view, String url) {
-                    CookieManager cookieManager = CookieManager.getInstance();
-                    cookieManager.setCookie(url, loginCookie);
+                CookieManager cookieManager = CookieManager.getInstance();
+                cookieManager.setCookie(url, loginCookie);
             }
         });
     }
@@ -135,33 +140,21 @@ public class WebViewActivity extends Activity implements OnClickListener{
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.btn_lend_book:
-                lendBook();
-                break;
-            case R.id.btn_return_book:
-                returnBook();
-                break;
             case R.id.btn_search:
                 searchBook();
                 break;
             case R.id.btn_user:
                 showUser();
                 break;
+            case R.id.btn_lend_book:
+                lendBook();
+                break;
+            case R.id.btn_return_book:
+                returnBook();
+                break;
             default:
                 break;
         }
-    }
-
-    private void lendBook() {
-        Intent intent = new Intent(WebViewActivity.this, BookCodeActivity.class);
-        intent.putExtra(WebViewActivity.EXTRA_ACTION, WebViewActivity.EXTRA_ACTION_LEND);
-        startActivity(intent);
-    }
-
-    private void returnBook() {
-        Intent intent = new Intent(WebViewActivity.this, BookCodeActivity.class);
-        intent.putExtra(WebViewActivity.EXTRA_ACTION, WebViewActivity.EXTRA_ACTION_RETURN);
-        startActivity(intent);
     }
 
     private void searchBook() {
@@ -176,4 +169,15 @@ public class WebViewActivity extends Activity implements OnClickListener{
         startActivity(intent);
     }
 
+    private void lendBook() {
+        Intent intent = new Intent(WebViewActivity.this, BookCodeActivity.class);
+        intent.putExtra(WebViewActivity.EXTRA_ACTION, WebViewActivity.EXTRA_ACTION_LEND);
+        startActivity(intent);
+    }
+
+    private void returnBook() {
+        Intent intent = new Intent(WebViewActivity.this, BookCodeActivity.class);
+        intent.putExtra(WebViewActivity.EXTRA_ACTION, WebViewActivity.EXTRA_ACTION_RETURN);
+        startActivity(intent);
+    }
 }
