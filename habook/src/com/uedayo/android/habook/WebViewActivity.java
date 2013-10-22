@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.Window;
 import android.webkit.CookieManager;
 import android.webkit.WebSettings;
@@ -14,8 +16,9 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.webkit.HttpAuthHandler;
 import android.webkit.WebViewDatabase;
+import android.widget.Button;
 
-public class WebViewActivity extends Activity {
+public class WebViewActivity extends Activity implements OnClickListener{
 
     static final String TAG = WebViewActivity.class.getSimpleName();
 
@@ -32,8 +35,16 @@ public class WebViewActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setLayout();
+        setOnClickLisner();
         setJavaScriptEnabled();
         setLinkNotOpenWithBrowser();
+    }
+
+    private void setOnClickLisner() {
+        ((Button) findViewById(R.id.btn_lend_book)).setOnClickListener(this);
+        ((Button) findViewById(R.id.btn_return_book)).setOnClickListener(this);
+        ((Button) findViewById(R.id.btn_search)).setOnClickListener(this);
+        ((Button) findViewById(R.id.btn_user)).setOnClickListener(this);
     }
 
     @Override
@@ -119,6 +130,50 @@ public class WebViewActivity extends Activity {
             return true;
         }
         return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.btn_lend_book:
+                lendBook();
+                break;
+            case R.id.btn_return_book:
+                returnBook();
+                break;
+            case R.id.btn_search:
+                searchBook();
+                break;
+            case R.id.btn_user:
+                showUser();
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void lendBook() {
+        Intent intent = new Intent(WebViewActivity.this, BookCodeActivity.class);
+        intent.putExtra(WebViewActivity.EXTRA_ACTION, WebViewActivity.EXTRA_ACTION_LEND);
+        startActivity(intent);
+    }
+
+    private void returnBook() {
+        Intent intent = new Intent(WebViewActivity.this, BookCodeActivity.class);
+        intent.putExtra(WebViewActivity.EXTRA_ACTION, WebViewActivity.EXTRA_ACTION_RETURN);
+        startActivity(intent);
+    }
+
+    private void searchBook() {
+        Intent intent = new Intent(WebViewActivity.this, WebViewActivity.class);
+        intent.putExtra(WebViewActivity.EXTRA_ACTION, WebViewActivity.EXTRA_ACTION_SEARCH);
+        startActivity(intent);
+    }
+
+    private void showUser() {
+        Intent intent = new Intent(WebViewActivity.this, WebViewActivity.class);
+        intent.putExtra(WebViewActivity.EXTRA_ACTION, WebViewActivity.EXTRA_ACTION_USER);
+        startActivity(intent);
     }
 
 }

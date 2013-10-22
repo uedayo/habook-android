@@ -1,13 +1,44 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     tools:context=".MainActivity" >
+
+    <LinearLayout
+        android:id="@+id/LayoutLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/btn_lend_book"
+            style="@style/WebView.button"
+            android:background="@drawable/btn_blue"
+            android:text="@string/main_btn_lend_book" />
+
+        <Button
+            android:id="@+id/btn_return_book"
+            style="@style/WebView.button"
+            android:background="@drawable/btn_red"
+            android:text="@string/main_btn_return_book" />
+
+        <Button
+            android:id="@+id/btn_search"
+            style="@style/WebView.button"
+            android:background="@drawable/btn_purple"
+            android:text="@string/main_btn_search" />
+
+        <Button
+            android:id="@+id/btn_user"
+            style="@style/WebView.button"
+            android:background="@drawable/btn_green"
+            android:text="@string/main_btn_user" />
+    </LinearLayout>
 
     <WebView
         android:id="@+id/webView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-</RelativeLayout>
+</LinearLayout>
