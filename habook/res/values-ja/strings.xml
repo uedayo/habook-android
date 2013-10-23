@@ -16,4 +16,8 @@
     <string name="confirm_dialog_message">本当に終了しますか？</string>
     <string name="confirm_dialog_ok">終了</string>
     <string name="confirm_dialog_cancel">キャンセル</string>
+
+    <!-- toast -->
+    <string name="toast_barcode_guide">二段のバーコードのうち、上側を撮影してください</string>
+
 </resources>

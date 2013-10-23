@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 public class BookCodeActivity extends Activity {
 
@@ -24,6 +25,11 @@ public class BookCodeActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         startQRCodeScanner();
+        showGuide();
+    }
+
+    private void showGuide() {
+        Toast.makeText(this, getResources().getText(R.string.toast_barcode_guide), Toast.LENGTH_SHORT).show();
     }
 
     @Override
